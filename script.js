@@ -3,29 +3,29 @@
 const customersArray = [12, 1, 16, 2, 9, 6, 22, 27, 31, 7, 1, 8, 14, 29, 22, 16, 7, 4, 9, 18, 27, 11, 6, 23, 32, 21, 17, 5, 8, 17, 24, 9, 6, 15, 8, 1, 13, 7, 9, 14];
 
 let counter = 0;
-let arrayLength = 40;
-let individualBar = document.querySelector(".individual-bar");
+const maxNumberOfLoops = customersArray.length;
+let individualBar = document.querySelector("#individual-bar" + counter);
 
 loop();
 
 function loop() {
   console.log("loop");
+  console.log(counter);
+  let barHeight = customersArray[counter];
+
   counter++;
-  let queueSize = Math.floor(Math.random() * 32);
-  console.log(queueSize);
+  individualBar = document.querySelector("#individual-bar" + counter);
 
-  if (counter < arrayLength) {
-    loop();
-  } else {
+  /* console.log(individualBar); */
+  //let queueSize = Math.floor(Math.random() * 32);
+  //console.log(queueSize);
+
+  if (counter <= maxNumberOfLoops) {
+    individualBar.style.height = barHeight * 6 + "px";
+    setTimeout(loop, 100);
+  } /* else {
     customersArray.unshift(queueSize);
-    customersArray.splice(39, 1);
-    console.log(customersArray);
-    setBarHeight();
-  }
-  //setTimeout(loop, 1000);
-  individualBar.style.height = queueSize * 3 + "px";
-}
-
-function setBarHeight() {
-  //individualBar.style.height = queueSize * 3 + "px";
+    customersArray.pop();
+    console.log(customersArray); */
+  //}
 }
