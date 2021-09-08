@@ -16,16 +16,20 @@ function loop() {
   counter++;
   individualBar = document.querySelector("#individual-bar" + counter);
 
-  /* console.log(individualBar); */
-  //let queueSize = Math.floor(Math.random() * 32);
-  //console.log(queueSize);
+  console.log(individualBar);
 
   if (counter <= maxNumberOfLoops) {
     individualBar.style.height = barHeight * 6 + "px";
-    setTimeout(loop, 100);
-  } /* else {
-    customersArray.unshift(queueSize);
-    customersArray.pop();
-    console.log(customersArray); */
-  //}
+    loop();
+  } else {
+    let queueSize = Math.floor(Math.random() * 32);
+    //console.log(queueSize);
+    customersArray.push(queueSize);
+    customersArray.shift();
+    //console.log(customersArray);
+    individualBar.style.height = customersArray[0] * 6 + "px";
+    //console.log(individualBar);
+
+    setTimeout(loop, 1000);
+  }
 }
